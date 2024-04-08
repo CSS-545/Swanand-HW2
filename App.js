@@ -19,11 +19,11 @@ export default function App() {
     <>
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName="Hello"
+          initialRouteName="Load Image"
           screenOptions={globalScreenOptions}
         >
-          <Stack.Screen name="Hello" component={Hello} />
-          <Stack.Screen name="Bye" component={Bye} />
+          <Stack.Screen name="Load Image" component={Hello} />
+          <Stack.Screen name="Load User Settings" component={Bye} />
         </Stack.Navigator>
       </NavigationContainer>
     </>
