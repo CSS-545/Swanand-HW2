@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import {
   StyleSheet,
@@ -9,9 +9,13 @@ import {
   Image,
 } from "react-native";
 import * as ImagePicker from "expo-image-picker";
+import * as MediaLibrary from "expo-media-library";
+import { captureRef } from "react-native-view-shot";
 
 export default function Hello({ navigation }) {
   const [img, setImg] = useState(null);
+  const [status, requestPermission] = MediaLibrary.usePermissions();
+  const imageRef = useRef();
 
   const loadImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -21,13 +25,34 @@ export default function Hello({ navigation }) {
       quality: 1,
     });
 
+    console.log(result);
     if (!result.canceled) {
       setImg(result.assets[0].uri);
     }
   };
 
+  const saveImage = async () => {
+    if (status === null) {
+      requestPermission();
+    }
+
+    try {
+      const localUri = await captureRef(imageRef, {
+        height: 440,
+        quality: 1,
+      });
+
+      await MediaLibrary.saveToLibraryAsync(localUri);
+      if (localUri) {
+        alert("Saved!");
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   return (
-    <View style={styles.container}>
+    <View style={styles.container} ref={imageRef} collapsable={false}>
       <StatusBar style="auto" />
 
       {img ? (
@@ -63,6 +88,23 @@ export default function Hello({ navigation }) {
         }}
       >
         <Text style={{ fontSize: 20 }}>Open Gallery</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        onPress={saveImage}
+        style={{
+          margin: 20,
+          height: 50,
+          padding: 10,
+          backgroundColor: "lightgreen",
+          color: "white",
+          borderRadius: 20,
+          justifyContent: "center",
+          alignSelf: "center",
+          alignItems: "center",
+        }}
+      >
+        <Text style={{ fontSize: 20 }}>Save Screenshot</Text>
       </TouchableOpacity>
 
       <Button

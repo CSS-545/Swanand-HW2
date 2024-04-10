@@ -22,7 +22,7 @@ export default function App() {
           initialRouteName="Load Image"
           screenOptions={globalScreenOptions}
         >
-          <Stack.Screen name="Load Image" component={Hello} />
+          <Stack.Screen name="Load & Save Image" component={Hello} />
           <Stack.Screen name="Load User Settings" component={Bye} />
         </Stack.Navigator>
       </NavigationContainer>
