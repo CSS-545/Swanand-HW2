@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { StyleSheet, TextInput, View, Button, Alert } from "react-native";
+import { StyleSheet, TextInput, View, Button } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function Bye() {
@@ -9,7 +9,7 @@ export default function Bye() {
     try {
       await AsyncStorage.setItem("username", username);
       setUsername("");
-      Alert.alert("Saved", `Username ${username} saved successfully.`);
+      alert("Saved", `Username ${username} saved successfully.`);
     } catch (error) {
       console.error("Error saving data:", error);
     }
@@ -20,9 +20,9 @@ export default function Bye() {
       const restoredUsername = await AsyncStorage.getItem("username");
       if (restoredUsername !== null) {
         setUsername(restoredUsername);
-        Alert.alert("Restored", `Username ${restoredUsername} restored.`);
+        alert("Restored", `Username ${restoredUsername} restored.`);
       } else {
-        Alert.alert("No Data", "No username data found.");
+        alert("No Data", "No username data found.");
       }
     } catch (error) {
       console.error("Error retrieving data:", error);

@@ -2,8 +2,8 @@ import React from "react";
 import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Hello from "./screens/Hello";
-import Bye from "./screens/Bye";
+import Image from "./screens/Image";
+import Settings from "./screens/Settings";
 
 const Stack = createNativeStackNavigator();
 
@@ -22,8 +22,8 @@ export default function App() {
           initialRouteName="Load Image"
           screenOptions={globalScreenOptions}
         >
-          <Stack.Screen name="Load & Save Image" component={Hello} />
-          <Stack.Screen name="Load User Settings" component={Bye} />
+          <Stack.Screen name="Load & Save Image" component={Image} />
+          <Stack.Screen name="Load User Settings" component={Settings} />
         </Stack.Navigator>
       </NavigationContainer>
     </>

@@ -25,3 +25,8 @@ In a React Native project targeting Android, there are several approaches to sto
 - **Cons**: Cloud storage requires an internet connection and may introduce latency and reliability issues. Also most of the times, it is very expensive.
 
 #### Screenshots
+![First ss](https://raw.githubusercontent.com/CSS-545/Swanand-HW2/main/assets/1.jpg)
+
+![Second ss](https://raw.githubusercontent.com/CSS-545/Swanand-HW2/main/assets/2.jpg)
+
+![Third ss](https://raw.githubusercontent.com/CSS-545/Swanand-HW2/main/assets/3.jpg)
